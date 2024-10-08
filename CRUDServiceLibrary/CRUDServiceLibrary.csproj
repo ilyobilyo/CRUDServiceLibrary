@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
 	  <PackageId>CRUDServiceLibrary</PackageId>
-	  <PackageVersion>1.0.2</PackageVersion>
+	  <PackageVersion>1.0.3</PackageVersion>
 	  <Authors>ilyobilyo</Authors>
 	  <Description>A CRUD service framework for ASP.NET Core REST Web Apis.</Description>
 	  <PackageTags>CRUD;Service;ASP.NET;Core;WebAPI</PackageTags>

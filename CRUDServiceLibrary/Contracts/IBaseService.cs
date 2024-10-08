@@ -15,7 +15,7 @@ namespace CRUDServiceLibrary.Contracts
     /// <typeparam name="TInputModel">The type of the input model used to create or update the entity.</typeparam>
     /// <typeparam name="TEntityId">The type of the unique identifier for the entity (e.g., int, Guid).</typeparam>
     public interface IBaseService<TDataModel, TInputModel, TEntityId>
-        where TDataModel : IBaseEntity<TDataModel>
+        where TDataModel : IBaseEntity<TEntityId>
         where TInputModel : class
     {
         /// <summary>

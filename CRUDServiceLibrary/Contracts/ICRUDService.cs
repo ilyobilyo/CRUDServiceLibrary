@@ -18,7 +18,7 @@ namespace CRUDServiceLibrary.Contracts
     /// <typeparam name="TEntityId">The type of the unique identifier for the entity (e.g., int, Guid).</typeparam>
     public interface ICRUDService<TService, TDataModel, TInputModel, TResponseModel, TEntityId>
         where TInputModel : class
-        where TDataModel : IBaseEntity<TDataModel>
+        where TDataModel : IBaseEntity<TEntityId>
         where TResponseModel : class
         where TService : IBaseService<TDataModel, TInputModel, TEntityId>
     {

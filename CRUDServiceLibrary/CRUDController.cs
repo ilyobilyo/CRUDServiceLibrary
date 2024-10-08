@@ -21,7 +21,7 @@ namespace CRUDServiceLibrary
     [ApiController]
     public abstract class CRUDController<TService, TDataModel, TInputModel, TResponseModel, TEntityId> : ControllerBase
         where TInputModel : class
-        where TDataModel : IBaseEntity<TDataModel>
+        where TDataModel : IBaseEntity<TEntityId>
         where TResponseModel : class
         where TService : IBaseService<TDataModel, TInputModel, TEntityId>
     {

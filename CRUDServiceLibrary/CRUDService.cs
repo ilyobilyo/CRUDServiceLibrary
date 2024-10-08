@@ -10,7 +10,7 @@ namespace CRUDServiceLibrary
 {
     public class CRUDService<TService, TDataModel, TInputModel, TResponseModel, TEntityId> : ICRUDService<TService, TDataModel, TInputModel, TResponseModel, TEntityId>
         where TInputModel : class
-        where TDataModel : IBaseEntity<TDataModel>
+        where TDataModel : IBaseEntity<TEntityId>
         where TResponseModel : class
         where TService : IBaseService<TDataModel, TInputModel, TEntityId>
     {
