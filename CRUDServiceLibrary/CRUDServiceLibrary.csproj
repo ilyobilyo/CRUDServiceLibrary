@@ -17,6 +17,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <None Remove="bin\Debug\net8.0\CRUDServiceLibrary.xml" />
 	  <None Remove="screenshots\**" />
+	  <None Remove="ExampleAPI\**" />
+
 	  <None Include="bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml" Pack="true" PackagePath="\" />
 
   </ItemGroup>
