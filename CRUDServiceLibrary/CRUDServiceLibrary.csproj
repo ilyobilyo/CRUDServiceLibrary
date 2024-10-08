@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+	  <PackageId>CRUDServiceLibrary</PackageId>
+	  <PackageVersion>1.0.2</PackageVersion>
+	  <Authors>ilyobilyo</Authors>
+	  <Description>A CRUD service framework for ASP.NET Core REST Web Apis.</Description>
+	  <PackageTags>CRUD;Service;ASP.NET;Core;WebAPI</PackageTags>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <None Remove="bin\Debug\net8.0\CRUDServiceLibrary.xml" />
+	  <None Include="bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml" Pack="true" PackagePath="\" />
+
+  </ItemGroup>
+
+</Project>
