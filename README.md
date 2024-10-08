@@ -5,7 +5,7 @@
 - [IBaseService](#ibaseservicetdatamodel)
 - [CRUDController](#crudcontrollertservice)
 - [How it Works](#how-it-works)
-- 
+  
 # CRUDServiceLibrary
 The CRUDService is a generic, extensible service framework designed to simplify and centralize common CRUD (Create, Read, Update, Delete) operations in a REST Web API. It provides a flexible structure that can be adapted to manage different data models and services with minimal code duplication. By leveraging interfaces, inheritance, and type constraints, this service ensures that all CRUD operations follow a consistent approach while remaining highly reusable and maintainable across various domains.
 
