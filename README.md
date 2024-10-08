@@ -35,7 +35,7 @@ Type Constraints:
  - TInputModel: The model type used for accepting input during creation or update operations (e.g., CarInputModel, EmployeeInputModel). This enforces that services work with structured input data.
  - TEntityId: Represents the type of entity unique identifier (Id).
 
-While IBaseService defines the core CRUD operations, specific services (such as IAnimalService or IUserService) inherit from this interface to provide service-specific behavior or extend the base CRUD operations with additional methods, if needed. This architecture promotes code reuse, reduces redundancy, and maintains a clean separation of concerns between models, services, and controllers.
+While IBaseService defines the core CRUD operations, specific services (such as ICarService or IEmployeeService) inherit from this interface to provide service-specific behavior or extend the base CRUD operations with additional methods, if needed. This architecture promotes code reuse, reduces redundancy, and maintains a clean separation of concerns between models, services, and controllers.
 
 # CRUDController<TService, TDataModel, TInputModel, TResponseModel, TEntityId>
 The CRUDController is an abstract base class designed to streamline and standardize CRUD operations for various types of entities in a REST Web API. It serves as the foundation for specific controllers (e.g., CarController, EmployeeController) and provides a consistent way to handle Create, Read, Update, and Delete operations across different entity types. By leveraging generics and inheriting common functionality, this controller promotes reusability, reduces code duplication, and ensures consistency across different parts of the application.
