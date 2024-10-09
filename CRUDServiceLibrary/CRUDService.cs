@@ -45,8 +45,8 @@ namespace CRUDServiceLibrary
         {
             TDataModel dataEntity = _mapper.Map<TDataModel>(model);
 
-            dataEntity.CreatedAt = DateTime.Now;
-            dataEntity.UpdatedAt = DateTime.Now;
+            dataEntity.CreatedAt = DateTime.UtcNow;
+            dataEntity.UpdatedAt = DateTime.UtcNow;
 
             await _service.Create(dataEntity, model, cancellationToken);
 
@@ -64,7 +64,7 @@ namespace CRUDServiceLibrary
                 throw new ArgumentException("Entity not found");
             }
 
-            existingDataEntity.UpdatedAt = DateTime.Now;
+            existingDataEntity.UpdatedAt = DateTime.UtcNow;
 
             await _service.Update(existingDataEntity, model, cancellationToken);
 
