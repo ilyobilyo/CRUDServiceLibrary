@@ -20,6 +20,7 @@ Type Constraints:
  - TInputModel: Represents the input data model, typically used for creating or updating an entity.
  - TResponseModel: Defines the structure for data returned to the client.
  - TEntityId: Represents the type of entity unique identifier (Id).
+ - GetAll method haves Query params: It haves Dictionary filters, int take and int pageNumber (All are optional)
 
 # IBaseEntity<TEndityId>
 This interface defines common properties that all entities must have in database, ensuring a consistent structure across different data models. 
@@ -34,7 +35,8 @@ Type Constraints:
  - TDataModel: The entity type representing the data stored in the database (e.g., Car, Employee). This type must inherit from IBaseEntity, ensuring that all data entities have common properties such as Id, CreatedAt, and UpdatedAt.
  - TInputModel: The model type used for accepting input during creation or update operations (e.g., CarInputModel, EmployeeInputModel). This enforces that services work with structured input data.
  - TEntityId: Represents the type of entity unique identifier (Id).
-
+ - GetAll method haves Query params: It haves Dictionary filters, int take and int pageNumber (All are optional)
+  
 While IBaseService defines the core CRUD operations, specific services (such as ICarService or IEmployeeService) inherit from this interface to provide service-specific behavior or extend the base CRUD operations with additional methods, if needed. This architecture promotes code reuse, reduces redundancy, and maintains a clean separation of concerns between models, services, and controllers.
 
 # CRUDController<TService, TDataModel, TInputModel, TResponseModel, TEntityId>
@@ -46,6 +48,7 @@ Type Constraints:
  - TInputModel: The input data structure (e.g., CarInputModel, EmployeeInputModel) used for create and update operations.
  - TResponseModel: The response structure (e.g., CarResponseModel, EmployeeResponseModel) sent back to the client.
  - TEntityId: Represents the type of entity unique identifier (Id)
+ - GetAll method haves Query params: It haves Dictionary filters, int take and int pageNumber (All are optional)
 
 This setup allows the CRUDController to be flexible enough to handle any entity without duplicating code for each controller.
 
