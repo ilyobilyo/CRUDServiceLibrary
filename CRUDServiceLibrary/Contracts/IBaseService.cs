@@ -22,8 +22,11 @@ namespace CRUDServiceLibrary.Contracts
         /// Retrieves all data entities of the specified type.
         /// </summary>
         /// <param name="cancellationToken">Token to monitor for cancellation requests.</param>
+        /// <param name="filters">A dictionary of filters to apply to the query (optional).</param>
+        /// <param name="take">The number of records (pageSize) to retrieve from the result set (optional).</param>
+        /// <param name="pageNumber">The page number for pagination (optional).</param>
         /// <returns>A collection of data models.</returns>
-        public Task<IEnumerable<TDataModel>> GetAll(CancellationToken cancellationToken);
+        public Task<IEnumerable<TDataModel>> GetAll(CancellationToken cancellationToken, Dictionary<string, string> filters = null, int? take = null, int? pageNumber = null);
 
         /// <summary>
         /// Retrieves a specific data entity by its unique identifier.

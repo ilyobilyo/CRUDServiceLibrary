@@ -15,13 +15,6 @@ namespace TESTMyLib.Services
             this.appDbContext = appDbContext;
         }
 
-        public async Task<IEnumerable<Employee>> GetAll(CancellationToken cancellationToken)
-        {
-            return await appDbContext.Employees
-                .Include(x => x.Car)
-                .ToListAsync(cancellationToken);
-        }
-
         public async Task<Employee> GetById(int id, CancellationToken cancellationToken)
         {
             var employee = await appDbContext.Employees
@@ -64,6 +57,43 @@ namespace TESTMyLib.Services
             await appDbContext.SaveChangesAsync(cancellationToken);
 
             return dataEntity.Id;
+        }
+
+        public async Task<IEnumerable<Employee>> GetAll(CancellationToken cancellationToken, Dictionary<string, string> filters = null, int? take = null, int? pageNumber = null)
+        {
+            IQueryable<Employee> query = appDbContext.Employees
+    .Include(x => x.Car);
+
+            if (filters != null && filters.Any())
+            {
+                foreach (var filter in filters)
+                {
+                    var propertyName = filter.Key;
+                    var filterValue = filter.Value;
+
+                    // Check if the property exists in the Employee model
+                    var propertyInfo = typeof(Employee).GetProperty(propertyName);
+                    if (propertyInfo != null)
+                    {
+                        // Build the query dynamically based on the property type
+                        query = query.Where(e => EF.Property<string>(e, propertyName) == filterValue);
+                    }
+                }
+            }
+
+            if (pageNumber > 0 && take is not null)
+            {
+                int skip = (pageNumber.Value - 1) * take.Value;
+                query = query
+                    .Skip(skip)
+                    .Take(take.Value);
+            }
+            else if (take is not null)
+            {
+                query = query.Take(take.Value);
+            }
+
+            return await query.ToListAsync(cancellationToken);
         }
     }
 }

@@ -3,6 +3,7 @@ using CRUDServiceLibrary.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -36,13 +37,16 @@ namespace CRUDServiceLibrary
         /// Retrieves all entities and returns them as a list of response models.
         /// </summary>p
         /// <param name="cancellationToken">Token to monitor for cancellation requests.</param>
+        /// <param name="filters">A dictionary of filters to apply to the query (optional).</param>
+        /// <param name="take">The number of records (pageSize) to retrieve from the result set (optional).</param>
+        /// <param name="pageNumber">The page number for pagination (optional).</param>
         /// <returns>A list of all entities wrapped in response models.</returns>
         [HttpGet]
-        public virtual async Task<IActionResult> GetAll(CancellationToken cancellationToken)
+        public virtual async Task<IActionResult> GetAll(CancellationToken cancellationToken, [FromQuery] Dictionary<string, string> filters = null, [FromQuery] int? take = null, [FromQuery] int? pageNumber = null)
         {
             try
             {
-                var allEntities = await crudService.GetAll(cancellationToken);
+                var allEntities = await crudService.GetAll(cancellationToken, filters, take, pageNumber);
 
                 return Ok(allEntities);
             }

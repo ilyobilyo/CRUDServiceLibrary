@@ -26,8 +26,11 @@ namespace CRUDServiceLibrary.Contracts
         /// Retrieves all entities, transforms them into response models, and returns them.
         /// </summary>
         /// <param name="cancellationToken">Token to monitor for cancellation requests.</param>
+        /// <param name="filters">A dictionary of filters to apply to the query (optional).</param>
+        /// <param name="take">The number of records (pageSize) to retrieve from the result set (optional).</param>
+        /// <param name="pageNumber">The page number for pagination (optional).</param>
         /// <returns>A collection of response models representing the entities.</returns>
-        public Task<IEnumerable<TResponseModel>> GetAll(CancellationToken cancellationToken);
+        public Task<IEnumerable<TResponseModel>> GetAll(CancellationToken cancellationToken, Dictionary<string, string> filters = null, int? take = null, int? pageNumber = null);
 
         /// <summary>
         /// Retrieves a specific entity by its unique identifier and returns it as a response model.

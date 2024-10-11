@@ -23,9 +23,15 @@ namespace CRUDServiceLibrary
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<TResponseModel>> GetAll(CancellationToken cancellationToken)
+        public async Task<IEnumerable<TResponseModel>> GetAll(CancellationToken cancellationToken, Dictionary<string, string> filters = null, int? take = null, int? pageNumber = null)
         {
-            var allDataEntities = await _service.GetAll(cancellationToken);
+            if (pageNumber is not null 
+                && (take is null || take == 0))
+            {
+                throw new ArgumentException("If pageNumber is provided, 'take' must be a non-null, non-zero value to determine the page size.");
+            }
+
+            var allDataEntities = await _service.GetAll(cancellationToken, filters, take, pageNumber);
 
             var allResponseEntities = _mapper.Map<IEnumerable<TResponseModel>>(allDataEntities);
 

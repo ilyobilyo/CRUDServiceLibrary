@@ -1,5 +1,4 @@
-﻿using CRUDServiceLibrary;
-using CRUDServiceLibrary.Contracts;
+﻿
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TESTMyLib.Contracts;
@@ -11,9 +10,9 @@ namespace TESTMyLib.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmployeeController : CRUDController<IEmployeeService, Employee, EmployeeInputModel, EmployeeResponseModel, int>
+    public class EmployeeController : CRUDServiceLibrary.CRUDController<IEmployeeService, Employee, EmployeeInputModel, EmployeeResponseModel, int>
     {
-        public EmployeeController(ICRUDService<IEmployeeService, Employee, EmployeeInputModel, EmployeeResponseModel, int> crudService) : base(crudService)
+        public EmployeeController(CRUDServiceLibrary.Contracts.ICRUDService<IEmployeeService, Employee, EmployeeInputModel, EmployeeResponseModel, int> crudService) : base(crudService)
         {
         }
     }
